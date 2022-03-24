@@ -45,30 +45,36 @@ class Solution {
 	}
 	
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-    	final List<String> firstList = new ArrayList<>();
-    	final List<String> secondList = new ArrayList<>();
-    	String firstNumber; 
-    	String secondNumber; 
-    	String total;
-    	
-    	populateList.accept(l1, firstList);
-    	populateList.accept(l2, secondList);
-    	
-    	firstNumber = numberCollector.apply(firstList); 
-    	secondNumber = numberCollector.apply(secondList);
-    	
-    	total = new BigInteger(firstNumber).add(new BigInteger(secondNumber)).toString();
-    	
-    	ListNode flag = null;
-    	for (int i = 0; i < total.length(); i++) {
-    		String currentNum = String.valueOf(total.charAt(i));
-    		if(Objects.isNull(flag)) {
-    			flag = new ListNode(Integer.parseInt(currentNum));
-    		}else {
-    			flag = new ListNode(Integer.parseInt(currentNum), flag);
-    		}
-		}
-        return flag;
+    	ListNode dummy_head=new ListNode(0); // create a dummy node to return result
+        ListNode l3=dummy_head;
+        int carry=0;
+        while(l1!=null ||  l2!=null){
+            //These two line specify that if any list having less number of node than other, then zero will be                      placed in that position
+            int l1_val=(l1!=null)?l1.val:0;
+            int l2_val=(l2!=null)?l2.val:0;
+            
+            //System.out.println(l1_val+","+l2_val);
+           // Logic For Sum
+            int current_sum=l1_val+l2_val+carry;
+            carry=current_sum/10;
+            int last_digit=current_sum%10;
+            //System.out.println(last_digit);
+            
+            ListNode new_node=new ListNode(last_digit);
+            l3.next=new_node;
+            
+            if(l1!=null) l1=l1.next;
+            if(l2!=null) l2=l2.next;
+            l3=l3.next;
+            
+        }
+        if(carry>0){
+            ListNode new_node=new ListNode(carry);
+            l3.next=new_node;
+            l3=l3.next;
+        }
+        
+        return dummy_head.next;
     }
     
 }

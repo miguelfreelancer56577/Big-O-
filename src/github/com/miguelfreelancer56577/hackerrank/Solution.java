@@ -1,11 +1,26 @@
 package github.com.miguelfreelancer56577.hackerrank;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 class Solution {
 	public static void main(String[] args) {
-		Solution solution = new Solution();
-		System.out.println("Bits: " + solution.solution(3, 7));
+		int[] a = new int[] {1,5,5,8,9};
+		int[] b = new int[] {1,5,6,7,8,8,8,8,9};
+		
+		Integer[] array = Stream.concat(Arrays.stream(a).boxed(), Arrays.stream(b).boxed())
+                .toArray(Integer[]::new);
+				
+		
+		List<Integer> asList = Arrays.asList(array);
+		
+		Collections.sort(asList);
+		
+		asList.forEach((ele)->System.out.println(ele));
+		
 	}
     public int solution(int a, int b) {
         // write your code in Java SE 8
