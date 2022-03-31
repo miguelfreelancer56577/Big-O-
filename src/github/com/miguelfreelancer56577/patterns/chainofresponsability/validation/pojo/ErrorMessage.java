@@ -16,5 +16,10 @@ public class ErrorMessage {
 	public void setMesasage(String mesasage) {
 		this.mesasage = mesasage;
 	}
+
+	@Override
+	public String toString() {
+		return "ErrorMessage [mesasage=" + mesasage + "]";
+	}
 	
 }

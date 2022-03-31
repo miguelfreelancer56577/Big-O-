@@ -2,7 +2,7 @@ package github.com.miguelfreelancer56577.patterns.chainofresponsability.function
 
 import github.com.miguelfreelancer56577.patterns.builder.dto.UserDTO;
 
-public class ValidationFileds implements Validation{
+public class ValidationFileds implements Validation<UserDTO>{
 
 	@Override
 	public void validate(UserDTO user) {
