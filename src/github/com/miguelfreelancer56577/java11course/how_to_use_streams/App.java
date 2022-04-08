@@ -38,10 +38,6 @@ public class App {
 				.forEach((key,val)->
 					System.out.println("USING GROUPBY -> KEY: "+ key + " \n" + "VALUE: " + val));
 			
-			users
-				.stream()
-				.co
-			
 	}
 	
 	public static List<UserDTO> createUsers() {
